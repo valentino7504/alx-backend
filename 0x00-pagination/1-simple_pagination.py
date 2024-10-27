@@ -34,7 +34,7 @@ class Server:
 
         return self.__dataset
 
-    def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_page(self, page: int = 1, page_size: int = 10) -> List[List[str]]:
         '''gets the particular section of the dataset'''
         if self.__dataset:
             data = self.__dataset
