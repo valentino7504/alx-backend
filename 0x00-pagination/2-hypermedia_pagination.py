@@ -47,15 +47,14 @@ class Server:
         return data[start: end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        assert type(page) is int and page > 0
-        assert type(page_size) is int and page_size > 0
+        '''returns hypermedia dictionary'''
         page_data = self.get_page(page, page_size)
-        total_pages = math.ceil(len(self.dataset()) / page_size)
+        total_pages = math.ceil(len(self.__dataset) / page_size)
         return {
             'page_size': len(page_data),
             'page': page,
             'data': page_data,
             'next_page': page + 1 if page < total_pages else None,
-            'prev_page': None if page == 1 else page - 1,
+            'prev_page': page - 1 if page > 1 else None,
             'total_pages': total_pages
         }
