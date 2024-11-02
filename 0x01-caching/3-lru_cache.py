@@ -56,11 +56,11 @@ class DoublyLinkedList():
         '''deletes an item'''
         if self.__head is None:
             return
+        node = self.__head
         if self.__head == self.__tail:
             self.__head = None
             self.__tail = None
         else:
-            node = self.__head
             self.__head = node.next
             self.__head.prev = None
         del self.__hash[node.data]
