@@ -25,7 +25,7 @@ babel = Babel(app)
 @babel.localeselector
 def get_locale():
     '''determine match'''
-    return request.args.get('lang', Config.BABEL_DEFAULT_LOCALE)
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
